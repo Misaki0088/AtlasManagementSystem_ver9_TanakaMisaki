@@ -24,11 +24,11 @@
                 <p><a href="/logout">ログアウト</a></p>
                 <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
 
-                @auth
-                    @if (in_array(Auth::user()->role, [1, 2, 3]))<!-- 生徒（role = 4）は表示されない！講師（1,2,3）だけがサイドバーに表示される！ -->
+                @auth<!-- ログインしてるユーザーがいる時だけ、この中の処理を実行する！ -->
+                    @if (in_array(Auth::user()->role, [1, 2, 3]))<!-- in_array()はこの値が、配列の中にある？ログインユーザーが講師（1,2,3）だったらサイドバーに表示される！ -->
                     <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
                     <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
-                    @endif
+                    @endif<!-- Auth::id()今ログインしてる人のIDを取得するよ〜！」っていう意味で取得したIDをルーティングのuser_idに入れるようになってログインしてる人のやつってなる -->
                 @endauth
 
                 <p><a href="{{ route('post.show') }}">掲示板</a></p>
