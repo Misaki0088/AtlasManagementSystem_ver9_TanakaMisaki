@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
             'under_name_kana' => 'ミサキ',
             'mail_address' => 'misaki.tanaka@tanaka.com',
             'sex' => '2',
-            'birth_day' => '1991-08-27',
+            'birth_day' => '2000-08-27',
             'role' => '2',
             'password' =>bcrypt('00000000'),
         ]);
