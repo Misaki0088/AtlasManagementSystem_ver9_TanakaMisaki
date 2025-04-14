@@ -12,10 +12,12 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string|null
      */
+    //($request)はこの人がアクセスしようとしてるリクエスト（ページ）ってどんなやつ？
+    // どこにリダイレクトさせたいか？」を決めてあげるのが redirectTo()
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
+        if (! $request->expectsJson()) { //!を付けることによって「JSONじゃなくて、普通のWEBページにアクセスしてる時」になる
+            return route('loginView');//loginView という名前のルートに飛ばすよ！
         }
     }
 }
