@@ -123,9 +123,26 @@ class PostsController extends Controller
         $like = new Like;
 
         $like->where('like_user_id', $user_id)
-             ->where('like_post_id', $post_id)
-             ->delete();
+            ->where('like_post_id', $post_id)
+            ->delete();
 
         return response()->json();
     }
+
+    public function subCategoryCreate(Request $request){
+        // バリデーション
+        $request->validate([
+            'main_category_id' => ['required', 'integer', 'exists:main_categories,id'],
+            'sub_category_name' => ['required', 'string', 'max:100'],
+        ]);
+
+        // サブカテゴリー作成
+        SubCategory::create([
+            'main_category_id' => $request->main_category_id,
+            'sub_category' => $request->sub_category_name,
+        ]);
+
+        return redirect()->route('post.input');
+    }
+
 }

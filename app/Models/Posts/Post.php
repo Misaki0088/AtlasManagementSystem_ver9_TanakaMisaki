@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Models\Categories;
 namespace App\Models\Posts;
 
 use Illuminate\Database\Eloquent\Model;
@@ -24,7 +24,7 @@ class Post extends Model
     }
 
     public function subCategories(){
-        // リレーションの定義
+        return $this->hasMany(SubCategory::class);// リレーションの定義
     }
 
     // コメント数
