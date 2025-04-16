@@ -58,6 +58,13 @@ class PostsController extends Controller
     }
 
     public function postEdit(Request $request){
+
+        // バリデーションを追加
+        $request->validate([
+            'post_title' => ['required', 'string', 'max:100'],
+            'post_body' => ['required', 'string', 'max:2000'],
+        ]);
+        // バリデーション成功後にpostを更新で問題なければpost_title と post_body を使ってDBのレコードを更新
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
             'post' => $request->post_body,
