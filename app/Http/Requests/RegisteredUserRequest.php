@@ -47,6 +47,19 @@ class RegisteredUserRequest extends FormRequest
         ];
     }
 
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            $year = $this->old_year;
+            $month = $this->old_month;
+            $day = $this->old_day;
+
+            if (!checkdate((int)$month, (int)$day, (int)$year)) {
+                $validator->errors()->add('birthdate', '存在しない日付です。正しい日付を入力してください。');
+            }
+        });
+    }
+
     public function prepareForValidation()
     {
         $this->merge([
@@ -81,6 +94,10 @@ class RegisteredUserRequest extends FormRequest
             'alpha_num'=> ':attributeは半角の英数字のみで入力してください',
             'confirmed'=> ':attributeは確認用と完全一致するようにしてください',
             'after_or_equal'=> ':attributeは2000年以降で設定してください',
+            'birthdate.required' => '生年月日は必須項目です',
+            'birthdate.date' => '正しい形式の日付を入力してください',
+            'birthdate.after_or_equal' => '生年月日は2000年1月1日以降の日付にしてください',
+            'birthdate.before_or_equal' => '生年月日は今日以前の日付にしてください',
         ];
     }
 }
