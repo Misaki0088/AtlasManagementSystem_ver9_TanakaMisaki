@@ -7,8 +7,37 @@
           <div>
           </div>
           <div>
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
+            @if($post->user_id === Auth::id())
+            <button type="button" class="btn btn-sm btn-outline-primary edit-modal-open"
+              post_title="{{ $post->post_title }}"
+              post_body="{{ $post->post }}"
+              post_id="{{ $post->id }}">
+              編集
+            </button>
+            <!-- 削除ボタン（モーダルで確認） -->
+            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteModal">削除</button>
+            @endif
+          </div>
+          <!-- 削除確認モーダル -->
+          <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModalLabel">削除の確認</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  「{{ $post->post_title }}」を本当に削除しますか？
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                  <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-danger">削除する</a>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
 
@@ -72,4 +101,6 @@
     </form>
   </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </x-sidebar>

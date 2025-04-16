@@ -92,7 +92,7 @@ class RegisteredUserRequest extends FormRequest
             'sex.in' => '「男性」「女性」「その他」のいずれかを選択してください。',
             'between'=> ':attributeは8文字以上30文字以内で入力してください',
             'alpha_num'=> ':attributeは半角の英数字のみで入力してください',
-            'confirmed'=> ':attributeは確認用と完全一致するようにしてください',
+            'confirmed'=> ':attributeは確認用と一致するようにしてください',
             'after_or_equal'=> ':attributeは2000年以降で設定してください',
             'birthdate.required' => '生年月日は必須項目です',
             'birthdate.date' => '正しい形式の日付を入力してください',
