@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categories\MainCategory;
 use App\Models\Categories\SubCategory;
+use Illuminate\Validation\Validator;
 use App\Models\Posts\Post;
 use App\Models\Posts\PostComment;
 use App\Models\Posts\Like;
@@ -49,10 +50,12 @@ class PostsController extends Controller
     }
 
     public function postCreate(PostFormRequest $request){
+        // dd($request->all());
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
-            'post' => $request->post_body
+            'post' => $request->post_body,
+            'sub_category_id' => $request->post_category_id,
         ]);
         return redirect()->route('post.show');
     }
@@ -76,8 +79,18 @@ class PostsController extends Controller
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
-    public function mainCategoryCreate(Request $request){
+    public function mainCategoryCreate(PostFormRequest $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
+        return redirect()->route('post.input');
+    }
+
+    public function subCategoryCreate(PostFormRequest $request){
+        // サブカテゴリー作成
+        SubCategory::create([
+            'main_category_id' => $request->main_category_id,
+            'sub_category' => $request->sub_category_name,
+        ]);
+
         return redirect()->route('post.input');
     }
 
@@ -129,20 +142,5 @@ class PostsController extends Controller
         return response()->json();
     }
 
-    public function subCategoryCreate(Request $request){
-        // バリデーション
-        $request->validate([
-            'main_category_id' => ['required', 'integer', 'exists:main_categories,id'],
-            'sub_category_name' => ['required', 'string', 'max:100'],
-        ]);
-
-        // サブカテゴリー作成
-        SubCategory::create([
-            'main_category_id' => $request->main_category_id,
-            'sub_category' => $request->sub_category_name,
-        ]);
-
-        return redirect()->route('post.input');
-    }
 
 }
