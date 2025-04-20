@@ -12,6 +12,8 @@ use App\Models\Posts\PostComment;
 use App\Models\Posts\Like;
 use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
+use App\Http\Requests\MainCategoryRequest;
+use App\Http\Requests\SubCategoryRequest;
 use Auth;
 
 class PostsController extends Controller
@@ -60,13 +62,7 @@ class PostsController extends Controller
         return redirect()->route('post.show');
     }
 
-    public function postEdit(Request $request){
-
-        // バリデーションを追加
-        $request->validate([
-            'post_title' => ['required', 'string', 'max:100'],
-            'post_body' => ['required', 'string', 'max:2000'],
-        ]);
+    public function postEdit(PostFormRequest $request){
         // バリデーション成功後にpostを更新で問題なければpost_title と post_body を使ってDBのレコードを更新
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
@@ -79,12 +75,12 @@ class PostsController extends Controller
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
-    public function mainCategoryCreate(PostFormRequest $request){
+    public function mainCategoryCreate(MainCategoryRequest $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
 
-    public function subCategoryCreate(PostFormRequest $request){
+    public function subCategoryCreate(SubCategoryRequest $request){
         // サブカテゴリー作成
         SubCategory::create([
             'main_category_id' => $request->main_category_id,

@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->comment('ユーザーID');
-            $table->string('post_title', 191)->index()->comment('タイトル');
+            $table->string('post_title', 100)->index()->comment('タイトル');
             $table->text('post')->comment('投稿内容');
             $table->timestamps(); // created_at と updated_at を自動で追加
 
