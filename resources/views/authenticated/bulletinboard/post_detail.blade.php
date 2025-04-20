@@ -49,6 +49,9 @@
           </p>
           <span class="ml-5">{{ $post->created_at }}</span>
         </div>
+        @error('post_title')
+          <p class="text-danger">{{ $message }}</p>
+        @enderror
         <div class="detsail_post_title">{{ $post->post_title }}</div>
         <div class="mt-3 detsail_post">{{ $post->post }}</div>
       </div>
@@ -87,9 +90,6 @@
       <div class="w-100">
         <div class="modal-inner-title w-50 m-auto">
           <input type="text" name="post_title" placeholder="タイトル" class="w-100">
-          @error('post_title')
-            <p class="text-danger">{{ $message }}</p>
-          @enderror
         </div>
         <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
           <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
