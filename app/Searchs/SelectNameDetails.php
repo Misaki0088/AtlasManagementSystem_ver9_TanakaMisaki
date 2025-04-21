@@ -7,6 +7,7 @@ class SelectNameDetails implements DisplayUsers{
 
   // 改修課題：選択科目の検索機能
   public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects){
+    // die('呼ばれたよー！！');
     if(is_null($gender)){
       $gender = ['1', '2', '3'];
     }else{
@@ -17,7 +18,7 @@ class SelectNameDetails implements DisplayUsers{
     }else{
       $role = array($role);
     }
-    $users = User::with('subjects')
+    $query = User::with('subjects')
     ->where(function($q) use ($keyword){
       $q->Where('over_name', 'like', '%'.$keyword.'%')
       ->orWhere('under_name', 'like', '%'.$keyword.'%')
@@ -27,12 +28,14 @@ class SelectNameDetails implements DisplayUsers{
     ->where(function($q) use ($role, $gender){
       $q->whereIn('sex', $gender)
       ->whereIn('role', $role);
-    })
-    ->whereHas('subjects', function($q) use ($subjects){
-      $q->where('subjects.id', $subjects);
-    })
-    ->orderBy('over_name_kana', $updown)->get();
-    return $users;
+    });
+    //科目が指定されてれば絞り込む
+    if (!empty($subjects)) {
+      $query->whereHas('subjects', function($q) use ($subjects){
+        $q->where('subjects.id', $subjects);
+      });
+    }
+    return $query->orderBy('over_name_kana', $updown)->get();
   }
 
 }
