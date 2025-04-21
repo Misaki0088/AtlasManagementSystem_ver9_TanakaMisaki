@@ -43,7 +43,14 @@
       </div>
       <div>
         @if($user->role == 4)
-        <span>選択科目 :</span>
+          <span>選択科目 :</span>
+          @if($user->subjects->isNotEmpty())
+          @foreach($user->subjects as $subject)
+          {{ $subject->subject }}@if(!$loop->last)、@endif
+          @endforeach
+          @else
+          未選択
+          @endif
         @endif
       </div>
     </div>
