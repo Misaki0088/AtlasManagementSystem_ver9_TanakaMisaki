@@ -6,7 +6,7 @@
       @if($errors->first('main_category_id'))
         <span class="error_message">{{ $errors->first('main_category_id') }}</span>
       @endif
-      <select class="w-100" form="postCreate" name="sub_category_id">
+      <select class="w-100" form="postCreate" name="main_category_id">
         @foreach($main_categories as $main_category)
         <optgroup label="{{ $main_category->main_category }}">
           <!-- サブカテゴリー表示 -->
@@ -59,6 +59,7 @@
               <option value="{{ $main_category->id }}">{{ $main_category->main_category }}</option>
             @endforeach
           </select>
+
           <input type="text" class="w-100" name="sub_category_name" form="subCategoryRequest">
           @if ($errors->has('sub_category_name'))
             <div class="error_message" style="color:red;">

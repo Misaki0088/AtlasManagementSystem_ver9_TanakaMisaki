@@ -17,6 +17,6 @@ class SubCategory extends Model
     }
 
     public function posts(){
-        return $this->hasMany(Post::class);// リレーションの定義
+        return $this->belongsTo(Post::class);// リレーションの定義
     }
 }

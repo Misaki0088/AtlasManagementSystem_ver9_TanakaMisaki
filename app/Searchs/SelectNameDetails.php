@@ -32,7 +32,7 @@ class SelectNameDetails implements DisplayUsers{
     //科目が指定されてれば絞り込む
     if (!empty($subjects)) {
       $query->whereHas('subjects', function($q) use ($subjects){
-        $q->where('subjects.id', $subjects);
+        $q->whereIn('subjects.id', $subjects);
       });
     }
     return $query->orderBy('over_name_kana', $updown)->get();

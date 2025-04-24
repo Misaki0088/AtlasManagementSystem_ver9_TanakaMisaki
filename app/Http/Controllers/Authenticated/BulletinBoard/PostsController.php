@@ -26,9 +26,20 @@ class PostsController extends Controller
         $like = new Like;
         $post_comment = new Post;
         if(!empty($request->keyword)){
-            $posts = Post::with('user', 'postComments', 'likes')
+            // 入力キーワードと完全一致するサブカテゴリーがあるか探す
+            $matchedSubCategory = SubCategory::where('sub_category', $request->keyword)->first();
+
+        if ($matchedSubCategory) {
+        // 一致したら、そのサブカテゴリーに紐づく投稿だけ取得
+        $posts = $matchedSubCategory->posts()->with('user', 'postComments', 'likes')->get();}
+        else {
+        // なければ通常のキーワード検索（タイトル・本文）
+        $posts = Post::with('user', 'postComments', 'likes')
             ->where('post_title', 'like', '%'.$request->keyword.'%')
-            ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
+            ->orWhere('post', 'like', '%'.$request->keyword.'%')
+            ->get();
+        }
+
         }else if($request->category_word){
             $sub_category = $request->category_word;
             $posts = Post::with('user', 'postComments','likes')->get();
@@ -59,7 +70,7 @@ class PostsController extends Controller
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
             'post' => $request->post_body,
-            'sub_category_id' => $request->post_category_id,
+            'sub_category_id' => $request->sub_category_id,
         ]);
         return redirect()->route('post.show');
     }

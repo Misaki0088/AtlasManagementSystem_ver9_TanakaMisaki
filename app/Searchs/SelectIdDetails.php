@@ -32,7 +32,7 @@ class SelectIdDetails implements DisplayUsers{
     //科目が選ばれてるか(選ばれているときにだけ！)
     if (!empty($subjects)) {
       $query->whereHas('subjects', function($q) use ($subjects){
-        $q->where('subjects.id', $subjects);
+        $q->whereIn('subjects.id', $subjects);
       });
     }
 
