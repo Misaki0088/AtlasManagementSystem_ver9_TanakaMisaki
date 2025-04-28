@@ -45,10 +45,10 @@
           <ul class="ml-3">
           @foreach($category->subCategories as $sub)
           <li>
-            <form action="{{ route('post.show') }}" method="get">
-              <input type="hidden" name="category_word" value="{{ $sub->sub_category }}">
-              <button type="submit" class="btn btn-link p-0">{{ $sub->sub_category }}</button>
-            </form>
+          <form action="{{ route('post.show') }}" method="get">
+            <input type="hidden" name="category_word" value="{{ $sub->id }}"> {{-- ← IDに変更！ --}}
+            <button type="submit" class="btn btn-link p-0">{{ $sub->sub_category }}</button>
+          </form>
           </li>
           @endforeach
           </ul>
@@ -57,6 +57,6 @@
       </ul>
     </div>
   </div>
+  </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>
-</div>
 </x-sidebar>

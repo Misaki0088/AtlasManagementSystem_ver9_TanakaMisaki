@@ -42,14 +42,14 @@ class PostsController extends Controller
 
         }else if($request->category_word){
             $sub_category = $request->category_word;
-            $posts = Post::with('user', 'postComments','likes')->get();
-        }else if($request->like_posts){
-            $likes = Auth::user()->likePostId()->get('like_post_id');
-            $posts = Post::with('user', 'postComments','likes')
-            ->whereIn('id', $likes)->get();
-        }else if($request->my_posts){
-            $posts = Post::with('user', 'postComments','likes')
-            ->where('user_id', Auth::id())->get();
+            $matchedSubCategory = SubCategory::where('id', $request->category_word)->first();
+            if ($matchedSubCategory) {
+                // サブカテゴリーに紐づく投稿のみを取得
+                $posts = $matchedSubCategory->posts()->with('user', 'postComments', 'likes')->get();
+            } else {
+                // 万が一一致しなければ全件取得（または空でもOK）
+                $posts = collect();
+            }
         }
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
@@ -65,13 +65,16 @@ class PostsController extends Controller
     }
 
     public function postCreate(PostFormRequest $request){
-        // dd($request->all());
+        dd($request->all());
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
             'post' => $request->post_body,
             'sub_category_id' => $request->sub_category_id,
         ]);
+
+        $post->subCategories()->attach($request->sub_category_id);
+
         return redirect()->route('post.show');
     }
 
