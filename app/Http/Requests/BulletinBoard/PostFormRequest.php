@@ -27,12 +27,18 @@ class PostFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'post_id' => 'required|integer|exists:posts,id',
+        $rules = [
             'post_title' => 'required|string|max:100',
             'post_body' => 'required|string|max:2000',
             'sub_category_id' => 'required|integer|exists:sub_categories,id',
         ];
+
+        // 編集時だけpost_idをチェック
+        if ($this->isMethod('PUT') || $this->isMethod('PATCH')) {
+            $rules['post_id'] = 'required|integer|exists:posts,id';
+        }
+
+        return $rules;
     }
 
     public function messages(){
