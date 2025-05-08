@@ -32,16 +32,25 @@ class CalendarWeekDay {//予約確認画面
     $html[] = '<div class="text-left">';
     if($one_part){
       $count = $one_part->users->count();
-      $html[] = '<p class="day_part m-0 pt-1">1部：' . $count . '人</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 1]) . '">1部</a>：' . $count . '人</p>';
+    } else {
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 1]) . '">1部</a>：0人</p>';
     }
+
     if($two_part){
       $count = $two_part->users->count();
-      $html[] = '<p class="day_part m-0 pt-1">2部：' . $count . '人</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 2]) . '">2部</a>：' . $count . '人</p>';
+    } else {
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 2]) . '">2部</a>：0人</p>';
     }
+
     if($three_part){
       $count = $three_part->users->count();
-      $html[] = '<p class="day_part m-0 pt-1">3部：' . $count . '人</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 2]) . '">3部</a>：' . $count . '人</p>';
+    } else {
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 3]) . '">3部</a>：0人</p>';
     }
+
     $html[] = '</div>';
 
     return implode("", $html);
