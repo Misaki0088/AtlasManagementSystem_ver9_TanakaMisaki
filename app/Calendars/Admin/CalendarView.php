@@ -2,6 +2,7 @@
 namespace App\Calendars\Admin;
 use Carbon\Carbon;
 use App\Models\Users\User;
+use App\Models\Calendars\ReserveSettings;
 
 class CalendarView{
   private $carbon;
@@ -53,10 +54,8 @@ class CalendarView{
     $html[] = '</tbody>';
     $html[] = '</table>';
     $html[] = '</div>';
-
     return implode("", $html);
   }
-
   protected function getWeeks(){
     $weeks = [];
     $firstDay = $this->carbon->copy()->firstOfMonth();
@@ -72,3 +71,9 @@ class CalendarView{
     return $weeks;
   }
 }
+
+
+
+
+
+
