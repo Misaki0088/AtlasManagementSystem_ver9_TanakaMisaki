@@ -47,7 +47,7 @@ class CalendarView{
 
           if (in_array($day->everyDay(), $day->authReserveDay())) {
             $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
-            $html[] = '<div>参加部数：' . $reservePart . '部</div>';
+            $html[] = '<div>' . $reservePart . '部参加</div>';
           } else {
             $html[] = '<div>受付終了</div>';
           }
