@@ -46,7 +46,7 @@ class CalendarWeekDay {//予約確認画面
 
     if($three_part){
       $count = $three_part->users->count();
-      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 2]) . '">3部</a>：' . $count . '人</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 3]) . '">3部</a>：' . $count . '人</p>';
     } else {
       $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 3]) . '">3部</a>：0人</p>';
     }
