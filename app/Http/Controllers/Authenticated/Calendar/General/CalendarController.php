@@ -22,10 +22,22 @@ class CalendarController extends Controller
         DB::beginTransaction();
         try{
             $getPart = $request->getPart;
-            $getDate = $request->getData;
-            $reserveDays = array_filter(array_combine($getDate, $getPart));
+            $getDate = $request->getDate;
+            // dd($getDate);
+            $reserveDays = [];
+        foreach ($getDate as $i => $date) {
+            if (!empty($getPart[$i]) && !empty($date)) {
+                $reserveDays[$date] = $getPart[$i];
+            }
+        }
             foreach($reserveDays as $key => $value){
                 $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
+
+                if (!$reserve_settings) {
+                    DB::rollBack();
+                    return back()->with('error', 'この日程には予約できませんでした。もう一度確認してください。');
+                    }
+
                 $reserve_settings->decrement('limit_users');
                 $reserve_settings->users()->attach(Auth::id());
             }

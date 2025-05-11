@@ -66,24 +66,24 @@ class CalendarWeekDay{
      }else{
        $html[] = '<option value="3">リモ3部(残り'.$three_part_frame.'枠)</option>';
      }
-     $html[] = '</select>';
-     return implode('', $html);
-   }
+    $html[] = '</select>';
+    return implode('', $html);
+  }
 
-   function getDate(){
-     return '<input type="hidden" value="'. $this->carbon->format('Y-m-d') .'" name="getData[]" form="reserveParts">';
-   }
+  function getDate(){
+    return '<input type="hidden" value="'. $this->carbon->format('Y-m-d') .'" name="getData[]" form="reserveParts">';
+  }
 
-   function everyDay(){
-     return $this->carbon->format('Y-m-d');
-   }
+  function everyDay(){
+    return $this->carbon->format('Y-m-d');
+  }
 
-   function authReserveDay(){
-     return Auth::user()->reserveSettings->pluck('setting_reserve')->toArray();
-   }
+  function authReserveDay(){
+    return Auth::user()->reserveSettings->pluck('setting_reserve')->toArray();
+  }
 
-   function authReserveDate($reserveDate){
-     return Auth::user()->reserveSettings->where('setting_reserve', $reserveDate);
-   }
+  function authReserveDate($reserveDate){
+    return Auth::user()->reserveSettings->where('setting_reserve', $reserveDate);
+  }
 
 }
