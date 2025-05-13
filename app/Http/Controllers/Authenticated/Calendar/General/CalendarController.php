@@ -19,10 +19,12 @@ class CalendarController extends Controller
     }
 
     public function reserve(Request $request){
+    // dd($request->all());
+
         DB::beginTransaction();
         try{
             $getPart = $request->getPart;
-            $getDate = $request->getDate;
+            $getDate = $request->getData;
             // dd($getDate);
             $reserveDays = [];
         foreach ($getDate as $i => $date) {
@@ -30,9 +32,10 @@ class CalendarController extends Controller
                 $reserveDays[$date] = $getPart[$i];
             }
         }
+        // dd($reserveDays);
             foreach($reserveDays as $key => $value){
                 $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
-
+            // dd($reserve_settings);
                 if (!$reserve_settings) {
                     DB::rollBack();
                     return back()->with('error', 'この日程には予約できませんでした。もう一度確認してください。');

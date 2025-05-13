@@ -31,13 +31,15 @@
   </div>
   <div class="other_area border w-25">
     <div class="border m-4">
-      <div class=""><a href="{{ route('post.input') }}">投稿</a></div>
-      <div class="">
-        <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
-        <input type="submit" value="検索" form="postSearchRequest">
+      <div class="Submit_button"><a href="{{ route('post.input') }}">投稿</a></div>
+      <div class="Search_box">
+        <input type="text" class="Search_form" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
+        <input type="submit" class="Search_button" value="検索" form="postSearchRequest">
       </div>
-      <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
-      <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
+      <div class="filter-buttons">
+      <input type="submit" name="like_posts" class="liked-btn" value="いいねした投稿" form="postSearchRequest">
+      <input type="submit" name="my_posts" class="my-posts-btn" value="自分の投稿" form="postSearchRequest">
+      </div>
       <ul>
         @foreach($categories as $category)
         <li class="main_categories" category_id="{{ $category->id }}">

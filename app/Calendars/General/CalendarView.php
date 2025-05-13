@@ -74,12 +74,13 @@ class CalendarView{
           }
 
             $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
-            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+
         }else{
           $html[] = $day->selectPart($day->everyDay());
+          $html[] = $day->getDate();
         }
       }
-        $html[] = $day->getDate();
+
         $html[] = '</td>';
       }
       $html[] = '</tr>';
