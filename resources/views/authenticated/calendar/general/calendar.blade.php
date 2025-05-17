@@ -29,8 +29,9 @@
         <div class="reserveDate">
           <p class="reserveDate">予約日: </p>
         </div>
-        <p id="reservePart"></p>
-        <p id="reservePart">時間: </p>
+        <div class="reservePart">
+          <p class="reservePart">時間: </p>
+        </div>
         <p id="cancelModalMessage">上記の予約をキャンセルしますか？</p>
       </div>
       <div class="modal-footer">
