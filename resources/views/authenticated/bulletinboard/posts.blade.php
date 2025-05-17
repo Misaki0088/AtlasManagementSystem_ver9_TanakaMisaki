@@ -1,7 +1,7 @@
 <x-sidebar>
 <div class="board_area w-100 border m-auto d-flex">
   <div class="post_view w-75 mt-5">
-    <p class="w-75 m-auto">投稿一覧</p>
+    <p class="w-75 m-auto"></p>
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
@@ -30,7 +30,7 @@
     @endforeach
   </div>
   <div class="other_area border w-25">
-    <div class="border m-4">
+    <div class="post_like_search_box">
       <div class="Submit_button"><a href="{{ route('post.input') }}">投稿</a></div>
       <div class="Search_box">
         <input type="text" class="Search_form" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">

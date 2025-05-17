@@ -19,7 +19,7 @@ li {
 /* サイドバー */
 .sidebar {
   width: 190px;
-  height: 100vh;
+  height: 120vh;
   background-color: #03AAD2;
   font-weight: bold;
 }
@@ -111,13 +111,19 @@ li {
 }
 
 /* 掲示板 */
+.post_like_search_box{
+  margin-right: 30px;
+}
+
 .Submit_button,.Submit_button a{
   background-color: #03AAD2;
   color: #fff;
   border: none;
   text-align: center;
   border-radius: 5px;
+  padding: 0.3rem 1.3rem;
   margin-bottom: 10px;
+  margin-top: 45px;
 }
 
 .Search_box {
@@ -126,8 +132,11 @@ li {
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: white;
   margin-bottom: 10px;
+}
+
+.Search_form{
+  background-color: #ecf1f6;
 }
 
 .Search_button {
@@ -135,8 +144,8 @@ li {
   color: #fff;
   border: none;
   text-align: center;
-  padding: 0.5rem 0.7rem;
-  font-size: 10px;
+  padding: 0.5rem 1.3rem;
+  font-size: 12px;
   cursor: pointer;
 }
 
@@ -214,6 +223,11 @@ li {
 }
 
 /* 掲示板 詳細画面 */
+.post_create_container {
+  align-items: flex-start; /* 上揃え */
+  gap: 20px;
+}
+
 .contributor {
   font-size: 12px;
   color: #999;

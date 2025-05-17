@@ -13,4 +13,38 @@
     </div>
   </div>
 </div>
+
+{{-- 予約キャンセルモーダル --}}
+  <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cancelModalLabel">予約キャンセル確認</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- 予約キャンセルモーダルの中で予約日と時間を表示 -->
+        <div class="reserveDate">
+          <p class="reserveDate">予約日: </p>
+        </div>
+        <p id="reservePart"></p>
+        <p id="reservePart">時間: </p>
+        <p id="cancelModalMessage">上記の予約をキャンセルしますか？</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        <form method="POST" action="{{ route('deleteParts') }}">
+          @csrf
+          <input type="hidden" name="reserve_id" id="cancelReserveId">
+          <button type="submit" class="btn btn-danger">キャンセルする</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </x-sidebar>
