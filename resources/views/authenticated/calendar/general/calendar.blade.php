@@ -26,12 +26,12 @@
       </div>
       <div class="modal-body">
         <!-- 予約キャンセルモーダルの中で予約日と時間を表示 -->
-        <div class="reserveDate">
-          <p class="reserveDate">予約日: </p>
-        </div>
-        <div class="reservePart">
-          <p class="reservePart">時間: </p>
-        </div>
+      <div class="reserveDate">
+        <p id="reserveDateText">予約日: </p>
+      </div>
+      <div class="reservePart">
+        <p id="reservePartText">時間: </p>
+      </div>
         <p id="cancelModalMessage">上記の予約をキャンセルしますか？</p>
       </div>
       <div class="modal-footer">
@@ -50,19 +50,23 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
-    $('#cancelModal').on('click', function () {
-      $('.modal.fade').fadeIn();
-      var reserveDate = $(this).attr('data-reserve-date'); // 予約日
-      var reservePart = $(this).attr('data-reserve'); //部数
+  $(function () {
 
+$('.open-cancel-modal').on('click', function () {
+const reserveDate = $(this).data('reserve-date');
+const reservePart = $(this).data('reserve');
+const reserveId = $(this).data('reserve-id');
 
-  // モーダルに予約日と時間（部数）を表示
-  $('.reserveDate p').text(reserveDate);
-  $('.reservePart p').text(reservePart);
-return false;
+console.log('予約日:', reserveDate); // ← 一度これでブラウザで確認！
 
-  // 予約IDを隠しフィールドにセット
-  // modal.find('#cancelReserveId').val(reserveId);
+// 値の表示
+
+$('#reserveDateText').text('予約日: ' + reserveDate);
+$('#reservePartText').text('時間: ' + reservePart);
+$('#cancelReserveId').val(reserveId);
+
+});
+
 });
   </script>
 

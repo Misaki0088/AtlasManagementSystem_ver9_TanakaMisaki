@@ -63,8 +63,15 @@ class CalendarView{
           }
           $html[] = $day->render();
 
-        if(in_array($day->everyDay(), $day->authReserveDay())){
-          $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
+      if (in_array($day->everyDay(), $day->authReserveDay())) {
+        // まず予約データを取得
+        $reserveData = $day->authReserveDate($day->everyDay())->first();
+
+        // 安全に日付や部数を取り出す
+        $reserveDate = optional($reserveData)->setting_reserve ?? '';
+        $reserveId = optional($reserveData)->id ?? '';
+        $reservePart = optional($reserveData)->setting_part ?? '';
+
           if($reservePart == 1){
             $reservePart = "リモ1部";
           }else if($reservePart == 2){
@@ -74,13 +81,14 @@ class CalendarView{
           }
 
             $html[] = '<button type="button"
-                        class="btn btn-danger p-0 w-75 open-cancel-modal"
-                        data-toggle="modal"
-                        data-target="#cancelModal"
-                        data-reserve="' . $reservePart . '"
-                        data-reserve-date="' . $day->authReserveDate($day->everyDay())->first()->date . '" style="font-size:12px">
-                        ' . $reservePart .'
-                      </button>';
+              class="btn btn-danger p-0 w-75 open-cancel-modal"
+              data-toggle="modal"
+              data-target="#cancelModal"
+              data-reserve="' . $reservePart . '"
+              data-reserve-date="' . $reserveDate . '"
+              style="font-size:12px">'
+            . $reservePart .
+          '</button>';
 
         }else{
           $html[] = $day->selectPart($day->everyDay());
