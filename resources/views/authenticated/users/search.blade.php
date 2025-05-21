@@ -56,29 +56,32 @@
     </div>
     @endforeach
   </div>
-  <div class="search_area w-25 border">
+  <div class="search_area w-25">
   <form action="{{ route('user.show') }}" method="get" id="userSearchRequest">
     <div class="">
       <div>
+        <label>検索</label>
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索">
       </div>
-      <div>
+      <div class="category_area">
         <label>カテゴリ</label>
-        <select name="category">
+        <select name="category" class="narrow_select">
           <option value="name">名前</option>
           <option value="id">社員ID</option>
         </select>
-      </div>
-      <div>
+
         <label>並び替え</label>
-        <select name="updown">
+        <select name="updown" class="narrow_select">
           <option value="ASC">昇順</option>
           <option value="DESC">降順</option>
         </select>
       </div>
-      <div class="">
-        <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
-        <div class="search_conditions_inner">
+      <div class="search_conditions_box">
+        <p class="toggle_conditions">
+          <span>検索条件の追加</span>
+          <span class="arrow"></span>
+        </p>
+        <div class="toggle_conditions_inner">
           <div>
             <label>性別</label>
             <span>男</span><input type="radio" name="sex" value="1" >
@@ -109,13 +112,26 @@
         </div>
       </div>
       <div>
-        <input type="reset" value="リセット">
+        <input type="submit" name="search_btn" value="検索">
       </div>
       <div>
-        <input type="submit" name="search_btn" value="検索">
+        <input type="reset" value="リセット">
       </div>
     </div>
     </form>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.toggle_conditions').forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const parentBox = this.closest('.search_conditions_box');
+      if (parentBox) {
+        parentBox.classList.toggle('open');
+      }
+    });
+  });
+});
+</script>
 </x-sidebar>

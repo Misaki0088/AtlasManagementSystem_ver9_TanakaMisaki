@@ -285,9 +285,8 @@ li {
   font-size: 12px;
 }
 
-/* 掲示板　カテゴリー */
+/* 掲示板 カテゴリー */
 .category_area {
-  background: #FFF;
   border-radius: 10px;
 }
 
@@ -353,4 +352,158 @@ li {
 
 .subject_inner {
   display: none;
+}
+
+.search_content {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* ユーザー一覧エリア */
+.reserve_users_area {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  flex: 1;
+}
+
+/* ユーザー */
+.one_person {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+/* 検索エリア */
+.search_area {
+  width: 300px;
+  padding: 1rem;
+  border-radius: 8px;
+  position: sticky;
+  top: 1rem;
+  height: fit-content;
+}
+
+/* フォーム */
+.search_area input[type="text"],
+.search_area select {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.search_area .narrow_select {
+  width: 120px;
+}
+
+.category_area label {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.category_area select {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* ボタン */
+.search_area input[type="submit"],
+.search_area input[type="reset"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #03AAD2;
+  color: white;
+  cursor: pointer;
+}
+
+.search_area input[type="reset"] {
+  background-color: #e0e5e9;
+  color: #333;
+}
+
+/* 検索条件の追加スライド */
+.toggle_conditions_inner {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 10px;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  border-top: 1px solid #ccc;
+}
+
+/* 開いたときの状態（親に open クラスを追加） */
+.search_conditions_box.open .toggle_conditions_inner {
+  max-height: 400px;
+  padding: 10px;
+}
+
+/* トグル見出しの部分 */
+.toggle_conditions {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s;
+}
+
+.arrow {
+  content: "";
+    position: absolute;
+    right: 25px;
+    top: 64%;
+    transition: all 0.3s ease-in-out;
+    width: 7px;
+    height: 7px;
+    border-top: solid 1.5px #333;
+    border-right: solid 1.5px #333;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+
+.arrow.open  {
+  content: "";
+    position: absolute;
+    right: 25px;
+    top: 41%;
+    transition: all 0.3s ease-in-out;
+    width: 7px;
+    height: 7px;
+    border-top: solid 1.5px #333;
+    border-right: solid 1.5px #333;
+    -webkit-transform: rotate(315deg);
+    transform: rotate(315deg);
+}
+
+
+
+/* 予約詳細画面 */
+.reservation-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* ヘッダーの背景 */
+.reservation-table th {
+  background-color: #0099cc;
+  color: white;
+  padding: 4px;
+}
+
+/* 偶数行（2行目、4行目…）の背景色 */
+.reservation-table tbody tr:nth-child(even) {
+  background-color: #f2f9fc;
+  padding: 4px;
+}
+
+/* 奇数行（1行目、3行目…）の背景色 */
+.reservation-table tbody tr:nth-child(odd)  {
+  background-color: #ffffff;
+  padding: 4px;
 }

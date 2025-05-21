@@ -1,25 +1,25 @@
 <x-sidebar>
 <div class="vh-100 d-flex" style="align-items:center; justify-content:center;">
-  <div class="w-50 m-auto h-75">
+  <div class="w-75 m-auto h-75">
   <p><span>{{ $date }}</span><span class="ml-3">{{ $part }}部</span></p>
-    <div class="h-75 border">
-      <table class="">
+    <div class="">
+      <table class="reservation-table">
         <tr class="text-center">
-          <th class="w-25">ID</th>
-          <th class="w-25">名前</th>
-          <th class="w-25">場所</th>
+          <th style="width: 15%; padding: 4px;">ID</th>
+          <th style="width: 45%; padding: 4px;">名前</th>
+          <th style="width: 45%; padding: 4px;">場所</th>
         </tr>
         <tr class="text-center">
-          <td class="w-25"></td>
+          <td class="w-20"></td>
           <td class="w-25"></td>
         </tr>
 
         @foreach ($reservePersons as $reservation)
           @foreach ($reservation->users as $user)
             <tr class="text-center">
-              <td class="w-25">{{ $user->id }}</td>
-              <td class="w-25">{{ $user->over_name }} {{ $user->under_name }}</td>
-              <td class="w-25">リモート</td>
+              <td class="w-15" style="padding: 4px;">{{ $user->id }}</td>
+              <td class="w-25" style="padding: 4px;">{{ $user->over_name }} {{ $user->under_name }}</td>
+              <td class="w-25" style="padding: 4px;">リモート</td>
             </tr>
           @endforeach
         @endforeach

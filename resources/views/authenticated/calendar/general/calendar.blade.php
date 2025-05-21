@@ -18,30 +18,31 @@
   <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <form method="POST" action="{{ route('deleteParts') }}">
       <div class="modal-header">
         <h5 class="modal-title" id="cancelModalLabel">予約キャンセル確認</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-          <span aria-hidden="true">&times;</span>
+
         </button>
       </div>
       <div class="modal-body">
         <!-- 予約キャンセルモーダルの中で予約日と時間を表示 -->
       <div class="reserveDate">
         <p id="reserveDateText">予約日: </p>
+        <input type="hidden" name="reserve_date" id="cancelReserveDate">
       </div>
       <div class="reservePart">
         <p id="reservePartText">時間: </p>
+        <input type="hidden" name="reserve_part" id="cancelReservePart">
       </div>
         <p id="cancelModalMessage">上記の予約をキャンセルしますか？</p>
       </div>
+
       <div class="modal-footer">
+        @csrf
         <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-        <form method="POST" action="{{ route('deleteParts') }}">
-          @csrf
-          <input type="hidden" name="reserve_id" id="cancelReserveId">
-          <button type="submit" class="btn btn-danger">キャンセルする</button>
-        </form>
+        <button type="submit" class="btn btn-danger" id="cancelReservationButton">キャンセルする</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -57,17 +58,19 @@ const reserveDate = $(this).data('reserve-date');
 const reservePart = $(this).data('reserve');
 const reserveId = $(this).data('reserve-id');
 
-console.log('予約日:', reserveDate); // ← 一度これでブラウザで確認！
-
-// 値の表示
+console.log('予約日:', reserveDate);
+console.log('予約時間:', reservePart);
 
 $('#reserveDateText').text('予約日: ' + reserveDate);
 $('#reservePartText').text('時間: ' + reservePart);
-$('#cancelReserveId').val(reserveId);
 
+$('#cancelReserveDate').val(reserveDate);
+$('#cancelReservePart').val(reservePart);
+
+$('#cancelModal').modal('show');
+});
 });
 
-});
   </script>
 
 

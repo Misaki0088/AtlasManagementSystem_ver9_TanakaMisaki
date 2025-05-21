@@ -45,4 +45,25 @@ class CalendarsController extends Controller
         }
         return redirect()->route('calendar.admin.setting', ['user_id' => Auth::id()]);
     }
+
+    public function delete(Request $request)
+    {
+        $reserveId = $request->input('reserve_id');
+
+        // 予約設定（部・日付）を取得
+        $reserveSetting = \App\Models\Calendars\ReserveSettings::find($reserveId);
+
+        if ($reserveSetting) {
+            // ユーザーの予約（中間テーブル）を削除
+            $reserveSetting->users()->detach(Auth::id());
+
+            // 人数を1つ戻す
+            $reserveSetting->increment('limit_users');
+
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['error' => '予約が見つかりません'], 404);
+    }
 }
+

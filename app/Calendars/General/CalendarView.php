@@ -72,12 +72,13 @@ class CalendarView{
         $reserveId = optional($reserveData)->id ?? '';
         $reservePart = optional($reserveData)->setting_part ?? '';
 
+        $reservePartLabel = '';
           if($reservePart == 1){
-            $reservePart = "リモ1部";
+            $reservePartLabel = "リモ1部";
           }else if($reservePart == 2){
-            $reservePart = "リモ2部";
+            $reservePartLabel = "リモ2部";
           }else if($reservePart == 3){
-            $reservePart = "リモ3部";
+            $reservePartLabel = "リモ3部";
           }
 
             $html[] = '<button type="button"
@@ -87,7 +88,7 @@ class CalendarView{
               data-reserve="' . $reservePart . '"
               data-reserve-date="' . $reserveDate . '"
               style="font-size:12px">'
-            . $reservePart .
+            . $reservePartLabel .
           '</button>';
 
         }else{
