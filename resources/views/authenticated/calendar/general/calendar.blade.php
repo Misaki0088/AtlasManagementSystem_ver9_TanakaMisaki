@@ -1,6 +1,7 @@
 <x-sidebar>
 <div class="vh-100 pt-5" style="background:#ECF1F6;">
-  <div class="border w-75 m-auto pt-5 pb-5" style="border-radius:5px; background:#FFF;">
+  <div class="border w-75 m-auto pt-5 " style="border-radius:10px; background:#FFF; box-shadow: 0 0 5px;">
+    <!-- custom-calendar-wrapper mx-auto p-4" style="background: #FFF; border-radius: 10px; box-shadow: 0 0 10px; " -->
     <div class="w-75 m-auto border" style="border-radius:5px;">
 
       <p class="text-center">{{ $calendar->getTitle() }}</p>
@@ -62,7 +63,7 @@ console.log('予約日:', reserveDate);
 console.log('予約時間:', reservePart);
 
 $('#reserveDateText').text('予約日: ' + reserveDate);
-$('#reservePartText').text('時間: ' + reservePart);
+$('#reservePartText').text('時間:リモ' + reservePart+ '部');
 
 $('#cancelReserveDate').val(reserveDate);
 $('#cancelReservePart').val(reservePart);
