@@ -22,6 +22,8 @@ li {
   height: 120vh;
   background-color: #03AAD2;
   font-weight: bold;
+  overflow-y: auto;
+  position: fixed;
 }
 
 .sidebar img{
@@ -68,10 +70,6 @@ li {
   font-size: 12px;
 }
 
-.adjust-table {
-  width: 70% !important;
-}
-
 .adjust-table td {
   padding: 0 !important;
 }
@@ -80,9 +78,100 @@ li {
   justify-content: space-around;
 }
 
-.adjust-table-btn {
-  width: 70%;
+.reserveSetting_btn {
+  margin: 10px;
+  margin-left: 93.5%;
 }
+
+/* 予約画面 */
+.custom-calendar-wrapper{
+  width: 75%;
+  margin-top: 20px;
+  margin-left: 255px;
+  margin-bottom: 30px;
+  border-radius:10px;
+  background:#FFF;
+  box-shadow: 0 0 5px;
+  /* height: 40px; */
+}
+
+.reserveParts_btn{
+  margin-bottom: 10px;
+  margin-left: 87.5%;
+}
+
+.calendar-td{
+  border: 1px solid #dee2e6;
+}
+
+.table thead th{
+  border: 1px solid #dee2e6;
+}
+
+.calendar_style{
+  border-radius:5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 20px;
+}
+
+/* 予約枠登録画面 */
+.setting_calender{
+  width: 75%;
+  height: 120vh;
+  overflow-y: auto;
+  border-radius:10px;
+  background:#FFF;
+  box-shadow: 0 0 5px;
+  margin-left: 210px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
+
+/* 予約確認画面 */
+.calender_admin{
+  padding: 30px;
+  border-radius:10px;
+  background:#FFF;
+  box-shadow: 0 0 5px;
+  margin-left: 255px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+
+
+/* 予約詳細画面 */
+.reservation-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* ヘッダーの背景 */
+.reservation-table th {
+  background-color: #0099cc;
+  color: white;
+  padding: 4px;
+}
+
+/* 偶数行（2行目、4行目…）の背景色 */
+.reservation-table tbody tr:nth-child(even) {
+  background-color: #f2f9fc;
+  padding: 4px;
+}
+
+/* 奇数行（1行目、3行目…）の背景色 */
+.reservation-table tbody tr:nth-child(odd)  {
+  background-color: #ffffff;
+  padding: 4px;
+}
+
 
 /* モーダル */
 .modal {
@@ -482,28 +571,3 @@ li {
 }
 
 
-
-/* 予約詳細画面 */
-.reservation-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-/* ヘッダーの背景 */
-.reservation-table th {
-  background-color: #0099cc;
-  color: white;
-  padding: 4px;
-}
-
-/* 偶数行（2行目、4行目…）の背景色 */
-.reservation-table tbody tr:nth-child(even) {
-  background-color: #f2f9fc;
-  padding: 4px;
-}
-
-/* 奇数行（1行目、3行目…）の背景色 */
-.reservation-table tbody tr:nth-child(odd)  {
-  background-color: #ffffff;
-  padding: 4px;
-}

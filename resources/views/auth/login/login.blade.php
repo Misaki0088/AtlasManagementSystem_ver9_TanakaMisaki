@@ -1,13 +1,14 @@
 <x-guest-layout>
+  <div style="min-height: 100vh; background-color: #ECF1F6;">
   <!-- ロゴ -->
-  <div class="text-center" style="margin-top: 80px;">
+  <div class="text-center pt-5">
     <img src="{{ asset('image/atlas-black.png') }}" alt="Atlasロゴ" style="width: 150px;">
   </div>
 
   <form action="{{ route('loginPost') }}" method="POST">
-    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="border vh-50 w-25">
-        <div class="w-75 m-auto pt-5">
+    <div class="w-100 d-flex py-5 align-items-center justify-content-center" style="background:#ECF1F6;">
+      <div class="border w-25 p-4" style="background:#fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <div class="w-75 m-auto pt-5" style="background:#fff; ">
           <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>
           <div class="border-bottom border-primary w-100">
             <input type="text" class="w-100 border-0" name="mail_address">

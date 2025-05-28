@@ -1,17 +1,17 @@
 <x-sidebar>
-<div class="vh-100 pt-5" style="background:#ECF1F6;">
-  <div class="border w-75 m-auto pt-5 " style="border-radius:10px; background:#FFF; box-shadow: 0 0 5px;">
-    <!-- custom-calendar-wrapper mx-auto p-4" style="background: #FFF; border-radius: 10px; box-shadow: 0 0 10px; " -->
-    <div class="w-75 m-auto border" style="border-radius:5px;">
+<div style="background:#ECF1F6; min-height: 100vh;">
+  <div class="custom-calendar-wrapper">
+    <div class="w-90 calendar_style">
 
       <p class="text-center">{{ $calendar->getTitle() }}</p>
-      <div class="">
+      <div>
         {!! $calendar->render() !!}
       </div>
     </div>
-    <div class="text-right w-75 m-auto">
+    <div class="reserveParts_btn">
       <input type="submit" class="btn btn-primary" value="予約する" form="reserveParts">
     </div>
+    <div style="height:20px;"></div>
   </div>
 </div>
 
