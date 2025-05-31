@@ -1,9 +1,12 @@
 <x-sidebar>
-<div class="board_area w-100 border m-auto d-flex">
+<div class="board_area w-100 m-auto d-flex">
   <div class="post_view w-75 mt-5">
     <p class="w-75 m-auto"></p>
     @foreach($posts as $post)
-    <div class="post_area border w-75 m-auto p-3">
+    <div class="post_area border p-3" style="width: 80%; margin-left:25px">
+      @foreach($post->subCategories as $category)
+        <p class="sub_category_names">{{ $category->sub_category }}</p>
+      @endforeach
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
       <div class="post_bottom_area d-flex">
@@ -29,7 +32,7 @@
     </div>
     @endforeach
   </div>
-  <div class="other_area border w-25">
+  <div class="other_area w-25">
     <div class="post_like_search_box">
       <div class="Submit_button"><a href="{{ route('post.input') }}">投稿</a></div>
       <div class="Search_box">
@@ -41,6 +44,7 @@
       <input type="submit" name="my_posts" class="my-posts-btn" value="自分の投稿" form="postSearchRequest">
       </div>
       <ul>
+        <p class="categories_search">カテゴリー検索</p>
         @foreach($categories as $category)
         <li class="main_categories" category_id="{{ $category->id }}">
           <span>{{ $category->main_category }}</span>

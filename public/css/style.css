@@ -39,9 +39,27 @@ li {
 }
 
 /* トップページ */
-.user_status {
+.my_profile{
   border-radius: 10px;
   background: #FFF;
+  margin-left: 225px;
+  margin-top: 100px;
+}
+
+.my_profile_title{
+  margin-left: 40px;
+}
+
+/* プロフィール画面 */
+.user_status{
+  border-radius: 10px;
+  background: #FFF;
+  margin-left: 225px;
+  margin-top: 100px;
+}
+
+.profile_style{
+  margin-left: 40px
 }
 
 /* スクール予約関連 */
@@ -200,6 +218,10 @@ li {
 }
 
 /* 掲示板 */
+.post_view{
+  margin-left: 250px;
+}
+
 .post_like_search_box{
   margin-right: 30px;
 }
@@ -283,9 +305,23 @@ li {
   white-space: pre-wrap;
 }
 
+.comment_area_container{
+  background: #FFF;
+  margin-top: 48px;
+  margin-left: 70px;
+  padding: 15px;
+  width: 408px;
+  border-radius: 5px;
+}
+
 .detail_container {
   background: #FFF;
+  margin-left: 225px;
+  padding: 15px;
+  width: 550px;
+  border-radius: 5px;
 }
+
 
 .post_area {
   background: #FFF;
@@ -293,7 +329,11 @@ li {
 }
 
 .post_bottom_area {
-  justify-content: space-between;
+  justify-content: flex-end;
+}
+
+.comment_btn{
+  margin-left: 87%;
 }
 
 .like_btn,
@@ -312,23 +352,31 @@ li {
 }
 
 /* 掲示板 詳細画面 */
+.sub_category_names{
+  background-color: #0099cc;
+  color: #fff;
+  display: min-content;
+  border-radius: 5px;
+}
+
 .post_create_container {
   align-items: flex-start; /* 上揃え */
   gap: 20px;
 }
 
-.contributor {
-  font-size: 12px;
+.post_user_name {
+  font-size: 15px;
   color: #999;
   font-weight: bold;
 }
 
 .detsail_post_title {
-  font-size: 14px;
+  font-size: 15px;
+  margin-bottom: 10px;
 }
 
 .detsail_post {
-  font-size: 12px;
+  font-size: 15px;
   color: #9E9E9E;
 }
 
@@ -344,6 +392,8 @@ li {
 .modal-inner-body textarea {
   height: 150px;
   resize: none;
+  margin-top: 10px;
+  border: 1px solid #ccc;
 }
 
 .edit-modal-btn {
@@ -351,8 +401,16 @@ li {
 }
 
 /* 掲示板 コメント */
-.comment_container {
-  background: #FFF;
+.comment_detail_container{
+  display: flex;
+}
+
+.comment_container textarea{
+  resize: none;
+  height: 120px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 2px;
 }
 
 .comment_area p,
@@ -404,8 +462,6 @@ li {
 
 /* ユーザー検索 */
 .reserve_users_area {
-  display: flex;
-  flex-wrap: wrap;
   width: 800px;
   margin: 10px auto;
   height: 80vh;
@@ -434,8 +490,8 @@ li {
 }
 
 .subject_edit_btn {
-  font-size: 12px;
-  color: #0000FF;
+  font-size: 16px;
+  color: #03AAD2;
   cursor: pointer;
 }
 
@@ -449,12 +505,35 @@ li {
   padding: 1rem;
 }
 
+.subject_form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.subject_items {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.subject_item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
 /* ユーザー一覧エリア */
 .reserve_users_area {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
   flex: 1;
+  margin-left: 225px;
+  background-color: #ecf1f6;
 }
 
 /* ユーザー */
@@ -473,6 +552,10 @@ li {
   position: sticky;
   top: 1rem;
   height: fit-content;
+}
+
+.categories_search{
+  padding-top: 10px;
 }
 
 /* フォーム */

@@ -26,8 +26,9 @@ class Post extends Model
         return $this->hasMany(PostComment::class);
     }
 
+    // リレーションの定義
     public function subCategories(){
-        return $this->belongsToMany(SubCategory::class,'post_sub_categories', 'post_id', 'sub_category_id');// リレーションの定義
+        return $this->belongsToMany(SubCategory::class,'post_sub_categories', 'post_id', 'sub_category_id');
     }
 
     // コメント数

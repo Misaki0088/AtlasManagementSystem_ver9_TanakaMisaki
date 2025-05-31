@@ -1,6 +1,6 @@
 <x-sidebar>
 <p>ユーザー検索</p>
-<div class="search_content w-100 border d-flex">
+<div class="search_content w-100 d-flex">
   <div class="reserve_users_area">
     @foreach($users as $user)
     <div class="border one_person">
@@ -56,7 +56,7 @@
     </div>
     @endforeach
   </div>
-  <div class="search_area w-25">
+  <div class="search_area" style="width:15%">
   <form action="{{ route('user.show') }}" method="get" id="userSearchRequest">
     <div class="">
       <div>
