@@ -15,7 +15,7 @@
       </div>
       <div class="">
         @can('admin')
-        <span class="subject_edit_btn">選択科目の登録</span>
+        <span class="subject_edit_btn subject-toggle-button">選択科目の登録</span>
         <div class="subject_inner">
           <form action="{{ route('user.edit') }}" method="post" class="subject_form">
             <div class="subject_items">
@@ -35,5 +35,22 @@
     </div>
   </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.querySelector('.subject-toggle-button');
+    const target = document.querySelector('.subject_inner');
 
+    toggle.addEventListener('click', function () {
+      const isOpen = toggle.classList.contains('open');
+
+      if (isOpen) {
+        toggle.classList.remove('open');
+        target.style.display = 'none';
+      } else {
+        toggle.classList.add('open');
+        target.style.display = 'block';
+      }
+    });
+  });
+</script>
 </x-sidebar>

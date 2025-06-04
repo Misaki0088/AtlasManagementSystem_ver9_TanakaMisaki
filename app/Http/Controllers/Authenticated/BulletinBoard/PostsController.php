@@ -93,6 +93,7 @@ class PostsController extends Controller
     }
     public function mainCategoryCreate(MainCategoryRequest $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
+        // dd(MainCategory::all());
         return redirect()->route('post.input');
     }
 
@@ -118,11 +119,12 @@ class PostsController extends Controller
     public function myBulletinBoard(){
         $posts = Auth::user()->posts()->get();
         $like = new Like;
+        // dd($posts);
         return view('authenticated.bulletinboard.post_myself', compact('posts', 'like'));
     }
 
     public function likeBulletinBoard(){
-        $like_post_id = Like::with('users')->where('like_user_id', Auth::id())->get('like_post_id')->toArray();
+        $like_post_id = Like::where('like_user_id', Auth::id())->pluck('like_post_id')->toArray();
         $posts = Post::with('user')->whereIn('id', $like_post_id)->get();
         $like = new Like;
         return view('authenticated.bulletinboard.post_like', compact('posts', 'like'));

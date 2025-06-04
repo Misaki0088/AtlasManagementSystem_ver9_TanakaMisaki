@@ -58,20 +58,18 @@
         @enderror
         <div class="detsail_post_title">{{ $post->post_title }}</div>
         <div class="detsail_post">{{ $post->post }}</div>
-      </div>
-      <div class="">
-
-          <span class="">コメント</span>
-          @foreach($post->postComments as $comment)
-
-          <div class="comment_area border-top">
-            <p>
-              <span>{{ $comment->commentUser($comment->user_id)->over_name }}</span>
-              <span>{{ $comment->commentUser($comment->user_id)->under_name }}</span>さん
-            </p>
+          <div class="comment_group">
+            <span class="comment_title">コメント</span>
+            @foreach($post->postComments as $comment)
+            <div class="comment_area" style="border-top:1px solid #ccc;">
+              <p>
+                <span>{{ $comment->commentUser($comment->user_id)->over_name }}</span>
+                <span>{{ $comment->commentUser($comment->user_id)->under_name }}</span>さん
+              </p>
             <p>{{ $comment->comment }}</p>
           </div>
           @endforeach
+          </div>
         </div>
       </div>
     </div>

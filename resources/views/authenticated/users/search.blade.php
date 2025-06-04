@@ -82,12 +82,14 @@
           <span class="arrow"></span>
         </p>
         <div class="toggle_conditions_inner">
-          <div>
+
             <label>性別</label>
+            <div class="select_sex">
             <span>男</span><input type="radio" name="sex" value="1" >
             <span>女</span><input type="radio" name="sex" value="2" >
             <span>その他</span><input type="radio" name="sex" value="3" >
           </div>
+
           <div>
             <label>権限</label>
             <select name="role" class="engineer">
@@ -100,14 +102,16 @@
           </div>
           <div class="selected_engineer">
             <label>選択科目</label>
+            <div class="subject_category">
             <br>
             @foreach($subjects as $subject)
               <label>
+                {{ $subject->subject }}
                 <input type="checkbox" name="subject_id[]" value="{{ $subject->id }}"
                   {{ is_array(request('subject_id')) && in_array($subject->id, request('subject_id')) ? 'checked' : '' }}>
-                {{ $subject->subject }}
               </label><br>
             @endforeach
+            </div>
           </div>
         </div>
       </div>
@@ -123,14 +127,14 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.toggle_conditions').forEach(toggle => {
-    toggle.addEventListener('click', function() {
-      const parentBox = this.closest('.search_conditions_box');
-      if (parentBox) {
-        parentBox.classList.toggle('open');
-      }
-    });
+  toggle.addEventListener('click', function() {
+    const parentBox = this.closest('.search_conditions_box');
+    const arrow = this.querySelector('.arrow');
+    if (parentBox) {
+      parentBox.classList.toggle('open');
+      if (arrow) arrow.classList.toggle('open');
+    }
   });
 });
 </script>

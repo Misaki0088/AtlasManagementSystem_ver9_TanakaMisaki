@@ -28,6 +28,7 @@ class PostFormRequest extends FormRequest
     public function rules()
     {
         $rules = [
+            'post_id' => 'required|integer|exists:posts,id',
             'post_title' => 'required|string|max:100',
             'post_body' => 'required|string|max:2000',
             'sub_category_id' => 'required|integer|exists:sub_categories,id',

@@ -1,8 +1,8 @@
 <x-sidebar>
 <div class="vh-100 d-flex" style="align-items:center; justify-content:center;">
-  <div class="w-75 m-auto h-75">
-  <p><span>{{ $date }}</span><span class="ml-3">{{ $part }}部</span></p>
-    <div class="">
+  <div class="w-75 h-75">
+  <p class="reservation-date"><span>{{ $date }}</span><span class="ml-2">{{ $part }}部</span></p>
+    <div>
       <table class="reservation-table">
         <tr class="text-center">
           <th style="width: 15%; padding: 4px;">ID</th>

@@ -166,9 +166,14 @@ li {
 
 
 /* 予約詳細画面 */
+.reservation-date{
+  margin-left: 200px;
+}
+
 .reservation-table {
-  width: 100%;
+  width: 75%;
   border-collapse: collapse;
+  margin-left: 200px;
 }
 
 /* ヘッダーの背景 */
@@ -297,6 +302,11 @@ li {
 .post_create_area {
   background: #FFF;
   border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 225px;
+  margin-bottom: 20px;
+  width: 525px;
+  padding: 20px;
 }
 
 .post_create_area textarea {
@@ -351,12 +361,36 @@ li {
   color: red;
 }
 
+.accordion-toggle {
+  position: relative;
+  padding-right: 30px;
+}
+
+.accordion-toggle::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid #333;
+  border-right: 1.5px solid #333;
+  transform: translateY(-50%) rotate(135deg); /* ▼向き */
+  transition: transform 0.3s ease;
+}
+
+.accordion-toggle.open::after {
+  transform: translateY(-50%) rotate(-45deg); /* ▲向き */
+}
+
+
+
 /* 掲示板 詳細画面 */
 .sub_category_names{
   background-color: #0099cc;
   color: #fff;
-  display: min-content;
   border-radius: 5px;
+  width: fit-content;
 }
 
 .post_create_container {
@@ -401,6 +435,7 @@ li {
 }
 
 /* 掲示板 コメント */
+
 .comment_detail_container{
   display: flex;
 }
@@ -424,6 +459,11 @@ li {
   resize: none;
 }
 
+.comment_group{
+  margin-top: 30px;
+}
+
+
 .comment_container span {
   font-size: 12px;
 }
@@ -435,6 +475,9 @@ li {
 /* 掲示板 カテゴリー */
 .category_area {
   border-radius: 10px;
+  background-color: #fff;
+  margin-top: 20px;
+  padding: 20px;
 }
 
 .category_box {
@@ -501,7 +544,6 @@ li {
 
 .search_content {
   display: flex;
-  gap: 1rem;
   padding: 1rem;
 }
 
@@ -525,6 +567,28 @@ li {
   gap: 4px;
 }
 
+.subject-toggle-button{
+  position: relative;
+  padding-right: 30px;
+}
+
+.subject-toggle-button::after{
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid #03AAD2;
+  border-right: 1.5px solid #03AAD2;
+  transform: translateY(-50%) rotate(135deg);
+  transition: transform 0.3s ease;
+}
+
+.subject-toggle-button.open::after{
+  transform: translateY(-50%) rotate(-45deg);
+}
+
 
 /* ユーザー一覧エリア */
 .reserve_users_area {
@@ -532,7 +596,7 @@ li {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
   flex: 1;
-  margin-left: 225px;
+  margin-left: 200px;
   background-color: #ecf1f6;
 }
 
@@ -600,6 +664,21 @@ li {
   color: #333;
 }
 
+.select_sex{
+  font-size: 16px;
+}
+
+.subject_category{
+  display: flex;
+  font-size: 12px;
+}
+
+.subject_category label {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
 /* 検索条件の追加スライド */
 .toggle_conditions_inner {
   max-height: 0;
@@ -617,7 +696,8 @@ li {
 
 /* トグル見出しの部分 */
 .toggle_conditions {
-  padding: 10px;
+  position: relative;
+  padding-right: 20px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -626,31 +706,19 @@ li {
 }
 
 .arrow {
-  content: "";
-    position: absolute;
-    right: 25px;
-    top: 64%;
-    transition: all 0.3s ease-in-out;
-    width: 7px;
-    height: 7px;
-    border-top: solid 1.5px #333;
-    border-right: solid 1.5px #333;
-    -webkit-transform: rotate(135deg);
-    transform: rotate(135deg);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%) rotate(135deg);
+  transition: all 0.3s ease-in-out;
+  width: 7px;
+  height: 7px;
+  border-top: solid 1.5px #333;
+  border-right: solid 1.5px #333;
 }
 
 .arrow.open  {
-  content: "";
-    position: absolute;
-    right: 25px;
-    top: 41%;
-    transition: all 0.3s ease-in-out;
-    width: 7px;
-    height: 7px;
-    border-top: solid 1.5px #333;
-    border-right: solid 1.5px #333;
-    -webkit-transform: rotate(315deg);
-    transform: rotate(315deg);
+  transform: translateY(-50%) rotate(315deg);
 }
 
 

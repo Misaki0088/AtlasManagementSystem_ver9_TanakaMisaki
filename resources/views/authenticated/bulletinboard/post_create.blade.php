@@ -4,7 +4,7 @@
 
 <div class="post_create_container d-flex">
   <!-- 投稿フォーム -->
-  <div class="post_create_area border w-50 m-5 p-5">
+  <div class="post_create_area border">
     <div class="">
 
       <p class="mb-0">カテゴリー</p>
@@ -42,11 +42,12 @@
       <input type="submit" class="btn btn-primary" value="投稿">
     </div>
   </div>
+  </form>
 
   <!-- 管理者用カテゴリー追加 -->
   @can('admin')
   <div class="w-25 ml-auto mr-auto">
-    <div class="category_area mt-5 p-5">
+    <div class="category_area">
     <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">
     {{ csrf_field() }}
       <div class="">
@@ -87,5 +88,5 @@
   </div>
   @endcan
 </div>
-</form>
+
 </x-sidebar>

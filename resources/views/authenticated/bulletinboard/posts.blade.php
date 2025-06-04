@@ -40,15 +40,18 @@
         <input type="submit" class="Search_button" value="検索" form="postSearchRequest">
       </div>
       <div class="filter-buttons">
-      <input type="submit" name="like_posts" class="liked-btn" value="いいねした投稿" form="postSearchRequest">
-      <input type="submit" name="my_posts" class="my-posts-btn" value="自分の投稿" form="postSearchRequest">
+        <button class="liked-btn" onclick="location.href='{{ route('like.bulletin.board') }}'">いいねした投稿</button>
+        <button class="my-posts-btn" onclick="location.href='{{ route('my.bulletin.board') }}'">自分の投稿</button>
       </div>
       <ul>
         <p class="categories_search">カテゴリー検索</p>
         @foreach($categories as $category)
         <li class="main_categories" category_id="{{ $category->id }}">
-          <span>{{ $category->main_category }}</span>
-          <ul class="ml-3">
+          <div class="accordion-toggle d-flex justify-content-between align-items-center w-100" style="cursor: pointer;">
+            <span>{{ $category->main_category }}</span>
+            <span class="category-arrow"></span>
+          </div>
+          <ul class="sub_categories ml-3" style="display: none;">
           @foreach($category->subCategories as $sub)
           <li>
           <form action="{{ route('post.show') }}" method="get">
@@ -65,4 +68,19 @@
   </div>
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const toggles = document.querySelectorAll(".accordion-toggle");
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener("click", function () {
+      const subList = this.nextElementSibling;
+      const isOpen = this.classList.toggle("open");
+      if (subList) {
+        subList.style.display = isOpen ? "block" : "none";
+      }
+    });
+  });
+});
+</script>
 </x-sidebar>
