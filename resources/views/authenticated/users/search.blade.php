@@ -1,6 +1,6 @@
 <x-sidebar>
 <p>ユーザー検索</p>
-<div class="search_content w-100 d-flex">
+<div class="search_content">
   <div class="reserve_users_area">
     @foreach($users as $user)
     <div class="border one_person">
@@ -45,18 +45,18 @@
         @if($user->role == 4)
           <span>選択科目 :</span>
           @if($user->subjects->isNotEmpty())
-          @foreach($user->subjects as $subject)
-          {{ $subject->subject }}@if(!$loop->last)、@endif
-          @endforeach
-          @else
-          未選択
+            @foreach($user->subjects as $subject)
+              <span style="font-size: 12px;">{{ $subject->subject }}</span>@if(!$loop->last)、@endif
+            @endforeach
+            @else
+            未選択
           @endif
         @endif
       </div>
     </div>
     @endforeach
   </div>
-  <div class="search_area" style="width:15%">
+  <div class="search_area" style="width:20%">
   <form action="{{ route('user.show') }}" method="get" id="userSearchRequest">
     <div class="">
       <div>
