@@ -178,7 +178,7 @@
               <input type="radio" class="role admin_role" name="role" value="3" id="role3">
               <label for="role3" style="font-size:11px;">教師(英語)</label>
 
-              <input type="radio" class="role admin_role" name="role" value="4" id="role4">
+              <input type="radio" class="role other_role" name="role" value="4" id="role4">
               <label for="role4" style="font-size:11px;">生徒</label>
             </div>
           </div>
