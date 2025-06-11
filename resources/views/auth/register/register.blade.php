@@ -14,7 +14,7 @@
               @enderror
               <label class="d-block m-0" style="font-size:13px">姓</label>
               <div class="border-bottom border-primary">
-                <input type="text" class="w-100 border-0" name="over_name">
+                <input type="text" class="over_name w-100 border-0" name="over_name">
               </div>
             </div>
             <div class="w-50 pl-2">
@@ -23,7 +23,7 @@
               @enderror
               <label class=" d-block m-0" style="font-size:13px">名</label>
               <div class="border-bottom border-primary">
-                <input type="text" class="w-100 border-0" name="under_name">
+                <input type="text" class="under_name w-100 border-0" name="under_name">
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@
               @enderror
               <label class="d-block m-0" style="font-size:13px">セイ</label>
               <div class="border-bottom border-primary">
-                <input type="text" class="w-100 border-0" name="over_name_kana">
+                <input type="text" class="over_name_kana w-100 border-0" name="over_name_kana">
               </div>
             </div>
             <div class="w-50 pl-2">
@@ -45,7 +45,7 @@
               @enderror
               <label class="d-block m-0" style="font-size:13px">メイ</label>
               <div class="border-bottom border-primary">
-                <input type="text" class="w-100 border-0" name="under_name_kana">
+                <input type="text" class="under_name_kana w-100 border-0" name="under_name_kana">
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@
             @enderror
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
-              <input type="mail" class="w-100 border-0" name="mail_address">
+              <input type="e-mail" class="mail_address w-100 border-0" name="mail_address">
             </div>
           </div>
 
@@ -68,9 +68,9 @@
             @enderror
             <label class="d-block m-0" style="font-size:13px;">性別</label>
             </div>
-              <input type="radio" name="sex" value="1"> 男性
-              <input type="radio" name="sex" value="2"> 女性
-              <input type="radio" name="sex" value="3"> その他
+              <input type="radio" class="sex" name="sex" value="1"> 男性
+              <input type="radio" class="sex" name="sex" value="2"> 女性
+              <input type="radio" class="sex" name="sex" value="3"> その他
           </div>
 
           {{-- 生年月日 --}}
@@ -79,7 +79,7 @@
           <div class="text-danger" style="font-size:12px;">{{ $message }}</div>
           @enderror
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
-          <select class="" name="old_year">
+          <select class="old_year" name="old_year">
             <option value="none">-----</option>
             <option value="1985">1985</option>
             <option value="1986">1986</option>
@@ -169,16 +169,16 @@
             @enderror
             <label class="d-block m-0" style="font-size:13px">役職</label>
             <div>
-              <input type="radio" name="role" value="1" id="role1">
+              <input type="radio" class="role admin_role" name="role" value="1" id="role1">
               <label for="role1" style="font-size:11px;">教師(国語)</label>
 
-              <input type="radio" name="role" value="2" id="role2">
+              <input type="radio" class="role admin_role" name="role" value="2" id="role2">
               <label for="role2" style="font-size:11px;">教師(数学)</label>
 
-              <input type="radio" name="role" value="3" id="role3">
+              <input type="radio" class="role admin_role" name="role" value="3" id="role3">
               <label for="role3" style="font-size:11px;">教師(英語)</label>
 
-              <input type="radio" name="role" value="4" id="role4">
+              <input type="radio" class="role admin_role" name="role" value="4" id="role4">
               <label for="role4" style="font-size:11px;">生徒</label>
             </div>
           </div>
@@ -190,7 +190,7 @@
           @enderror
           <label class="d-block m-0" style="font-size:13px">選択科目</label>
           @foreach($subjects as $subject)
-          <div class="">
+          <div class="" >
             <input type="checkbox" name="subject[]" value="{{ $subject->id }}">
             <label>{{ $subject->subject }}</label>
           </div>
@@ -204,7 +204,7 @@
           @enderror
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
           <div class="border-bottom border-primary">
-            <input type="password" class="w-100 border-0" name="password">
+            <input type="password" class="password w-100 border-0" name="password">
           </div>
         </div>
 
@@ -215,7 +215,7 @@
           @enderror
           <label class="d-block m-0" style="font-size:13px">確認用パスワード</label>
           <div class="border-bottom border-primary">
-            <input type="password" class="w-100 border-0" name="password_confirmation">
+            <input type="password" class="password_confirmation w-100 border-0" name="password_confirmation">
           </div>
         </div>
 
@@ -240,5 +240,5 @@
     </div>
   @endif -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="{{ asset('js/register.js') }}" rel="stylesheet"></script>
+  <script src="{{ asset('js/register.js') }}"></script>
 </x-guest-layout>

@@ -49,7 +49,7 @@
               <span style="font-size: 12px;">{{ $subject->subject }}</span>@if(!$loop->last)、@endif
             @endforeach
             @else
-            未選択
+            <span>未選択</span>
           @endif
         @endif
       </div>

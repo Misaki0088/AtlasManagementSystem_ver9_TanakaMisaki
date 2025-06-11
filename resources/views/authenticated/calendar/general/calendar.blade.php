@@ -21,7 +21,7 @@
     <div class="modal-content">
       <form method="POST" action="{{ route('deleteParts') }}">
       <div class="modal-header">
-        <h5 class="modal-title" id="cancelModalLabel">予約キャンセル確認</h5>
+        <div class="modal-title" id="cancelModalLabel"></div>
 
         </button>
       </div>
@@ -40,8 +40,8 @@
 
       <div class="modal-footer">
         @csrf
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-        <button type="submit" class="btn btn-danger" id="cancelReservationButton">キャンセルする</button>
+        <button type="button" class="btn btn-primary close_button"  data-dismiss="modal">閉じる</button>
+        <button type="submit" class="btn btn-danger" id="cancelReservationButton">キャンセル</button>
       </div>
       </form>
     </div>

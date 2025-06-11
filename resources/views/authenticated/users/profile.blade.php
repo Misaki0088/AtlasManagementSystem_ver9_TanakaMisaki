@@ -19,15 +19,16 @@
         <div class="subject_inner">
           <form action="{{ route('user.edit') }}" method="post" class="subject_form">
             <div class="subject_items">
-            @foreach($subject_lists as $subject_list)
-            <div>
-              <label>{{ $subject_list->subject }}</label>
-              <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
+              @foreach($subject_lists as $subject_list)
+              <div>
+                <label>{{ $subject_list->subject }}</label>
+                <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
+              </div>
+                @endforeach
+                <input type="submit" value="登録" class="btn btn-primary">
+                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                {{ csrf_field() }}
             </div>
-            @endforeach
-            <input type="submit" value="登録" class="btn btn-primary">
-            <input type="hidden" name="user_id" value="{{ $user->id }}">
-            {{ csrf_field() }}
           </form>
         </div>
         @endcan
@@ -41,16 +42,10 @@
     const target = document.querySelector('.subject_inner');
 
     toggle.addEventListener('click', function () {
-      const isOpen = toggle.classList.contains('open');
-
-      if (isOpen) {
-        toggle.classList.remove('open');
-        target.style.display = 'none';
-      } else {
-        toggle.classList.add('open');
-        target.style.display = 'block';
-      }
-    });
+    toggle.classList.toggle('open');
+    target.classList.toggle('open');
   });
+});
+
 </script>
 </x-sidebar>

@@ -119,15 +119,17 @@ class PostsController extends Controller
     public function myBulletinBoard(){
         $posts = Auth::user()->posts()->get();
         $like = new Like;
+        $categories = MainCategory::with('subCategories')->get();
         // dd($posts);
-        return view('authenticated.bulletinboard.post_myself', compact('posts', 'like'));
+        return view('authenticated.bulletinboard.post_myself', compact('posts', 'like', 'categories'));
     }
 
     public function likeBulletinBoard(){
         $like_post_id = Like::where('like_user_id', Auth::id())->pluck('like_post_id')->toArray();
         $posts = Post::with('user')->whereIn('id', $like_post_id)->get();
         $like = new Like;
-        return view('authenticated.bulletinboard.post_like', compact('posts', 'like'));
+        $categories = MainCategory::with('subCategories')->get();
+        return view('authenticated.bulletinboard.post_like', compact('posts', 'like', 'categories'));
     }
 
     public function postLike(Request $request){

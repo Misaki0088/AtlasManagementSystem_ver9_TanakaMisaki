@@ -292,11 +292,24 @@ li {
   font-size: 10px;
 }
 
-
-
-
 .sub_categories {
   display: none;
+}
+
+.sub-category-link {
+  all: unset;
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  text-align: left!important;
+  border-bottom: 1px solid #ccc !important;
+  color: #333 !important;
+  cursor: pointer;
+}
+
+.sub-category-link:hover {
+  text-decoration: none !important;
+  color: #007bff!important;
 }
 
 .post_create_area {
@@ -432,6 +445,24 @@ li {
 
 .edit-modal-btn {
   justify-content: space-between;
+}
+
+.close_button{
+  margin-right: 60%!important;
+}
+
+.modal-header{
+  border-bottom: none!important;
+}
+
+.modal-footer{
+  border-top: none!important;
+}
+
+
+.modal-body {
+  padding-left: 30px!important;
+  padding-right: 30px!important;
 }
 
 /* 掲示板 コメント */

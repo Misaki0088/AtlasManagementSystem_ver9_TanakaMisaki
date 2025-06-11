@@ -23,24 +23,23 @@ class RegisteredUserRequest extends FormRequest
      */
     public function rules()
     {
-        $birthdate = request('old_year') . '-' . request('old_month') . '-' . request('old_day');
         return [
             'old_year' => ['required', 'digits:4'],
             'old_month' => ['required', 'integer', 'between:1,12'],
             'old_day' => ['required', 'integer', 'between:1,31'],
         // 合成した日付に対してバリデーション
             'birthdate' => [
-            'required',
-            'date',
-            'after_or_equal:2000-01-01',
-            'before_or_equal:today',
-            'date_format:Y-m-d',],
+                    'required',
+                    'date',
+                    'after_or_equal:2000-01-01',
+                    'before_or_equal:today',
+                    'date_format:Y-m-d',],
 
             'over_name'  => 'required|string|max:10',
             'under_name'   => 'required|string|max:10',
             'over_name_kana' => 'required|string|regex:/^[ァ-ヶー]+$/u|max:30',
             'under_name_kana'  => 'required|string|regex:/^[ァ-ヶー]+$/u|max:30',
-            'mail_address'   => 'required|unique:users,mail_address|max:100',
+            'mail_address' => 'required|email|unique:users,mail_address|max:100',
             'sex' => 'required|in:1,2,3',
             'role'  => 'required|in:1,2,3,4',
             'password'   => 'required|alpha_num:ascii|between:8,30|confirmed',
