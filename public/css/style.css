@@ -98,7 +98,8 @@ li {
 
 .reserveSetting_btn {
   margin: 10px;
-  margin-left: 93.5%;
+  margin-left: 84.0%;
+  margin-bottom: 10px;
 }
 
 /* 予約画面 */
@@ -136,19 +137,23 @@ li {
 /* 予約枠登録画面 */
 .setting_calender{
   width: 75%;
-  height: 120vh;
-  overflow-y: auto;
   border-radius:10px;
   background:#FFF;
   box-shadow: 0 0 5px;
-  margin-left: 210px;
+  margin-left: 190px;
   margin-top: 20px;
   margin-bottom: 20px;
-  padding-top: 15px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
+.setting_calender .calendar table {
+  font-size: 0.8rem; /* 表全体の文字を小さく */
+  width: 80%;        /* 幅を調整 */
+  margin: 0 auto;    /* 中央寄せ */
+  border-collapse: collapse;
+}
 
 
 /* 予約確認画面 */
